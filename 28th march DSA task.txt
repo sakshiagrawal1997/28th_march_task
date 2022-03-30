@@ -1,0 +1,71 @@
+28th March DSA Task
+1. Check whether the two Binary Search Trees are Identical or Not.
+
+#include <iostream>
+using namespace std;
+struct Node
+{
+	int key;
+	Node *left, *right;
+
+	Node(int key)
+	{
+		this->key = key;
+		this->left = this->right = null;
+	}
+};
+
+int isIdentical(Node* x, Node* y)
+{
+	
+	if (x == null && y == null) {
+		return 1;
+	}
+
+	// if both trees are non-empty and the value of their root node matches,
+	// recur for their left and right subtree
+	return (x && y) && (x->key == y->key) &&
+			isIdentical(x->left, y->left) &&
+			isIdentical(x->right, y->right);
+}
+
+int main()
+{
+	
+	Node* x = null;
+
+	x = new Node(15);
+	x->left = new Node(10);
+	x->right = new Node(20);
+	x->left->left = new Node(8);
+	x->left->right = new Node(12);
+	x->right->left = new Node(16);
+	x->right->right = new Node(25);
+
+	
+	Node* y = null;
+
+	y = new Node(15);
+	y->left = new Node(10);
+	y->right = new Node(20);
+	y->left->left = new Node(8);
+	y->left->right = new Node(12);
+	y->right->left = new Node(16);
+	y->right->right = new Node(25);
+
+	if (isIdentical(x, y)) {
+		cout << "The given binary trees are identical";
+	}
+	else {
+		cout << "The given binary trees are not identical";
+	}
+
+	return 0;
+}
+
+2. Algorithm for Calculate the height of a binary tree.
+
+. Data: root:root node of the binary tree
+. Result: Height of the binary tree
+. Procedure: 
+
